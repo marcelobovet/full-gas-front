@@ -96,3 +96,17 @@ code {
 .inicio {
   width: 90%;
 }
+
+.detalle-card {
+  width: 450px;
+}
+
+.container-carro {
+  background-color: #eee;
+}
+
+.bloque {
+  background-color: aliceblue;
+  width: 900px;
+  height: 100px;
+}

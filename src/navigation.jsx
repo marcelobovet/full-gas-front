@@ -54,7 +54,7 @@ export const NAVIGATION = [
         element: <Favoritos />
     },
     {
-        path: "/posts:id",
+        path: "/posts/:id",
         label: "detalle",
         inNav: false,
         role: 'all',

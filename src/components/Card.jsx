@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import MyContext from "../MyContext";
+import { useNavigate } from "react-router-dom";
 
-const Card = ({ product, addCard }) => {
+const Card = ({ post }) => {
     const { addProductCart } = useContext(MyContext);
 
-
-
+    const navigate = useNavigate();
+    
     return (
         <div className="card tarjeta">
             <img className="imgStyle"
@@ -18,13 +19,13 @@ const Card = ({ product, addCard }) => {
 
             <div className="card-body row">
                 <div className="d-flex justify-content-center">
-                    <h4>{product.title}</h4>
+                    <h4>{post.title}</h4>
                 </div>
                 <div className="d-flex justify-content-between align-items-end">
-                    <button className="btn btn-outline-primary" onClick={() => { addProductCart({ quantity: 1, product }) }}>
+                    <button className="btn btn-outline-primary" onClick={() => { addProductCart({ quantity: 1, post }) }}>
                         Agregar al carro
                     </button>
-                    <button className="btn btn-outline-primary">
+                    <button className="btn btn-outline-primary" onClick={ ()=> {navigate(`/posts/${post.id}`)}}>
                         ver mas
                     </button>
                 </div>

@@ -37,7 +37,7 @@ const Sesion = () => {
                 </div>
                 <div className="text-center mt-3">
                     <p>
-                        ¿Aun no tienes una cuenta? <a href="#" className="link-underline-primary">Registrate</a>.
+                        ¿Aun no tienes una cuenta? <a href="/register" className="link-underline-primary">Registrate</a>.
                     </p>
                 </div>
             </form>

@@ -47,6 +47,14 @@ const ContextProvider = ({ children }) => {
     setPostLoading(false)
   };
 
+  const getPostById = async (id) => {
+    setPostLoading(true)
+    const res = await axios.get(`${URL_API}/posts/${id}`);
+    const postId = await res.data
+    setPostLoading(false)
+    return postId
+  };
+
   const addPost = async () => {
     await axios.post(URL_API + "/posts");
     addPost();
@@ -64,33 +72,33 @@ const ContextProvider = ({ children }) => {
 
   // CARRO
 
-  const addProductCart = ({ quantity, product }) => {
+  const addProductCart = ({ quantity, post }) => {
 
     //Se busca si el producto a agregar ya esta en el carrito 
-    const findProduct = cart.find(cart => cart.product.id === product.id)
+    const findProduct = cart.find(cart => cart.post.id === post.id)
 
     //Si el producto NO esta en el carrito lo agrega directamente a este.
     if (!findProduct) {
-      setCart([...cart, { quantity, product }])
+      setCart([...cart, { quantity, post }])
 
       // Si el producto SI esta en el carrito busca el indice del producto dentro del carro y modifica la cantidad asociada al producto.
     } else {
-      const objIndex = cart.findIndex((cart => cart.product.id === product.id));
+      const objIndex = cart.findIndex((cart => cart.post.id === post.id));
       cart[objIndex].quantity = quantity;
       setCart([...cart])
     }
   }
 
-  const removeProductCart = ({ quantity, product }) => {
+  const removeProductCart = ({ quantity, post }) => {
 
     //Si la cantidad ingresada por paramentro es 0, elimina el producto del carrito
     if (quantity === 0) {
-      const newCart = cart.filter(cart => cart.product.id !== product.id);
+      const newCart = cart.filter(cart => cart.post.id !== post.id);
       setCart([...newCart]);
 
       // Si la cantidad ingresada por parametro es mayor a 0 busca el indice del producto dentro del carro y modifica la cantidad asociada al producto.
     } else {
-      const objIndex = cart.findIndex((cart => cart.product.id === product.id));
+      const objIndex = cart.findIndex((cart => cart.post.id === post.id));
       cart[objIndex].quantity = quantity;
       setCart([...cart])
     }
@@ -129,7 +137,8 @@ const ContextProvider = ({ children }) => {
         removeProductCart,
         login,
         logout,
-        user
+        user,
+        getPostById
         // total,
         // setTotal,
         // cart,

@@ -10,7 +10,7 @@ import { useContext } from "react";
 
 const Header = () => {
 
-  const { user, logout } = useContext(MyContext);
+  const { user, logout, cart } = useContext(MyContext);
   const navigate = useNavigate()
 
   //Se utiliza este array para identificar las rutas publicas que se quieren mostrar al lado izquierdo del nav
@@ -85,6 +85,7 @@ const Header = () => {
             <NavLink className={`text-white text-decoration-none`} to={path}>{label}</NavLink>
           ))
           }
+          <p className="text-white">  {cart.length? cart.length : ""}</p>
         </div>
 
       </div>
