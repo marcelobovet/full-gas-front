@@ -57,17 +57,17 @@ const ContextProvider = ({ children }) => {
 
   const addPost = async () => {
     await axios.post(URL_API + "/posts");
-    addPost();
+    getPosts();
   };
 
   const editPost = async (id) => {
     await axios.put(URL_API + `/posts/${id}`);
-    editPost();
+    getPosts();
   };
 
   const deletePost = async (id) => {
     await axios.delete(URL_API + `/posts/${id}`);
-    deletePost();
+    getPosts();
   };
 
   // CARRO

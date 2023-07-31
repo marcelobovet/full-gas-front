@@ -14,12 +14,13 @@ const BloquePublic = () => {
                 </div>
                 <div className="col-3">
                     <p>Title</p>
+                    <p>Tipo</p>
                 </div>
                 <div className="col-3">
                     <p>Precio</p>
                 </div>
                 <div className="col-3">
-                    <p>Peso</p>
+                    <p>Formato</p>
                 </div>
                 <div className="d-flex justify-content-end">
                     <button className="btn btn-success me-2 mb-2 rounded-pill">

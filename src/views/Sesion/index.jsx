@@ -17,7 +17,7 @@ const Sesion = () => {
 
     const onSubmit = () => {
         login(email, password);
-        navigate('/')
+        navigate('/home')
     }
 
     return (<Layout>
