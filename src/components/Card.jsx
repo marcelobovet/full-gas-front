@@ -22,10 +22,10 @@ const Card = ({ post }) => {
                     <h4>{post.title}</h4>
                 </div>
                 <div className="d-flex justify-content-between align-items-end">
-                    <button className="btn btn-outline-primary" onClick={() => { addProductCart({ quantity: 1, post }) }}>
+                    <button className="btn btn-outline-primary rounded-pill" onClick={() => { addProductCart({ quantity: 1, post }) }}>
                         Agregar al carro
                     </button>
-                    <button className="btn btn-outline-primary" onClick={ ()=> {navigate(`/posts/${post.id}`)}}>
+                    <button className="btn btn-outline-primary rounded-pill" onClick={ ()=> {navigate(`/posts/${post.id}`)}}>
                         ver mas
                     </button>
                 </div>

@@ -27,7 +27,7 @@ const Registrar = () => {
                     <input type="password" className="form-control" id="exampleInputPassword1" /* onChange={handleChangePassword} */ />
                 </div>
                 <div className=" d-flex justify-content-center">
-                    <button type="submit" className="btn btn-primary" /* onClick={onSubmit} */ > registrar </button>
+                    <button type="submit" className="btn btn-primary rounded-pill" /* onClick={onSubmit} */ > registrar </button>
                 </div>
                 <div className="text-center mt-3">
                     <p>

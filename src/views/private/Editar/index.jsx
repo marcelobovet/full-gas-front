@@ -30,7 +30,7 @@ const FormEdit = () => {
             </div>
 
             <div className=" d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary" /* onClick={onSubmit} */ > Editar</button>
+                <button type="submit" className="btn btn-primary rounded-pill" /* onClick={onSubmit} */ > Editar</button>
             </div>
 
         </form>

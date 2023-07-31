@@ -1,11 +1,11 @@
 import Layout from "../../../components/Layout";
-import BoxPublic from "../../../components/BoxPublic";
+import BloquePublic from "../../../components/BloquePublic";
 
 const Publicaciones = () => {
 
   return (<Layout>
     <div className="container d-grid justify-content-center vh-100 bg">
-      <BoxPublic/>
+      <BloquePublic/>
 
     </div>
 

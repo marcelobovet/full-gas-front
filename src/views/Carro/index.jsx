@@ -19,7 +19,7 @@ const Carro = () => {
           
         </div>
         <div className="d-flex justify-content-end h-25">
-          <button className="btn btn-success pago mb-3">
+          <button className="btn btn-success pago mb-3 rounded-pill">
             Pagar
           </button>
         </div>

@@ -38,8 +38,8 @@ const Detalle = () => {
                         <li className="list-group-item">Marca:  {postId.marca} </li>
                     </ul>
                     <div className=" d-flex justify-content-center">
-                        <button className="btn btn-success btn-md me-5 mt-2 mb-2">Agregar al carro</button>
-                        <button className="btn btn-secondary btn-md  mt-2 mb-2">Regresar</button>
+                        <button className="btn btn-success btn-md me-5 mt-2 mb-2 rounded-pill">Agregar al carro</button>
+                        <button className="btn btn-secondary btn-md  mt-2 mb-2 rounded-pill">Regresar</button>
                     </div>
                 </div>}
 
