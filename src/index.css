@@ -101,12 +101,24 @@ code {
   width: 450px;
 }
 
-.container-carro {
-  background-color: #eee;
+.bg {
+  background-color: aliceblue;
+}
+
+.grid-card {
+height: fit-content;
 }
 
 .bloque {
-  background-color: aliceblue;
-  width: 900px;
-  height: 100px;
+  background-color: white;
+  width: 700px;
+}
+
+.pago {
+  height: 40px;
+  width: 80px;
+}
+
+.pag-total{
+  height: 20px;
 }

@@ -9,13 +9,24 @@ const Carro = () => {
   const { cart } = useContext(MyContext);
 
   return (
-  <Layout>
-    <div className="container container-carro justify-content-center vh-100">
-      {cart && cart.map((cart) => (
-        <div> <BloqueCarro item={cart}/></div>     
-      ))}
-    </div>
-  </Layout>)
+    <Layout>
+      <div className="container d-grid justify-content-center vh-auto bg">
+        {cart && cart.map((cart) => (
+          <div className="justify-content-center align-item-start col-12" > <BloqueCarro item={cart} /></div>
+        ))}
+        <div className="d-flex justify-content-end grid-cart h-25">
+          <p className=" fw-bold grid-cart pago-total mt-2"> Total: $   </p>
+          
+        </div>
+        <div className="d-flex justify-content-end h-25">
+          <button className="btn btn-success pago mb-3">
+            Pagar
+          </button>
+        </div>
+        
+      </div>
+
+    </Layout>)
 }
 
 

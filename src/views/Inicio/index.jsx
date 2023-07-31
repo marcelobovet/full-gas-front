@@ -20,7 +20,7 @@ const Inicio = () => {
                     <div className="row">
                         {postLoading && <p>cargando</p>}
                         {!postLoading && posts.map((post) => {
-                            return (<div className="col-sm-12 col-ms-auto col-lg-auto col-xl-auto">
+                            return (<div className="col-sm-12 col-md-auto col-lg-auto col-xl-auto">
                                 <Card post={post}/>
                             </div>)
                         })}
