@@ -31,13 +31,14 @@ const Detalle = () => {
               {!postLoading && postId &&  <div className="card detalle-card">
                     <img src="..." className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">{postId.title}</h5>
-                        <p className="card-text">{postId.body}</p>
+                        <h5 className="card-title">{postId.titulo}</h5>
+                        <p className="card-text">{postId.descripcion}</p>
                     </div>
                     <ul className="list-group list-group-flush text-center">
-                        <li className="list-group-item">Precio: ${postId.price} </li>
-                        <li className="list-group-item">Peso: {postId.peso} kg. </li>
+                        <li className="list-group-item">Precio: ${postId.precio} </li>
+                        <li className="list-group-item">Formato: {postId.peso} kg. </li>
                         <li className="list-group-item">Marca:  {postId.marca} </li>
+                        <li className="list-group-item">Tipo:  {postId.tipo} </li>
                     </ul>
                     <div className=" d-flex justify-content-center">
                         <button className="btn btn-success btn-md me-5 mt-2 mb-2 rounded-pill" onClick={() => { addProductCart({ quantity: 1, post: postId }) }}>Agregar al carro</button>

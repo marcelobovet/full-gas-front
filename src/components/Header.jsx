@@ -22,7 +22,7 @@ const Header = () => {
   const privateRoutes = ['Publicaciones', 'Historial y favoritos', 'Historial']
 
   return (
-    < div className="navbar navbar-dark bg-dark mb-4" >
+    < div className="navbar navbar-dark bg-dark mb-4 fixed-top" >
       <div className="columnas">
         <div className="d-flex justify-content-start mt-2 fw-bold">
           <span className="navbar-brand">

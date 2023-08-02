@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const MyContext = createContext();
 
-const URL_API = "https://jsonplaceholder.typicode.com";
+const URL_API = "http://localhost:3000";
 
 
 const ContextProvider = ({ children }) => {
@@ -43,7 +43,9 @@ const ContextProvider = ({ children }) => {
   const getPosts = async () => {
     setPostLoading(true)
     const { data: rPosts } = await axios.get(URL_API + "/posts");
-    setPosts([...rPosts])
+    console.log(" este es rpost ", rPosts.data);
+    setPosts([...rPosts.data])
+    
     setPostLoading(false)
   };
 

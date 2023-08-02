@@ -21,12 +21,13 @@ const Inicio = () => {
                         {postLoading && <p>cargando</p>}
                         {!postLoading && posts.map((post) => {
                             return (<div className="col-sm-12 col-md-auto col-lg-auto col-xl-auto">
-                                <Card post={post}/>
+                                <Card post={post} />
                             </div>)
                         })}
                     </div>
                 </div>
             </div>
+            
         </div>
 
     </Layout>)

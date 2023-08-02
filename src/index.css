@@ -45,11 +45,11 @@ code {
 .tarjeta {
   width: 300px;
   margin-top: 20px;
-  height: 350px;
+  height: 450px;
 }
 
 .card-body {
-  height: 180px;
+  height: auto;
 }
 
 .finder {
@@ -60,7 +60,7 @@ code {
   background-color: rgba(208, 40, 40, 0.086);
 }
 
-.drop-container {
+/* .drop-container {
   position: relative;
   display: flex;
   gap: 10px;
@@ -74,7 +74,7 @@ code {
   color: #444;
   cursor: pointer;
   transition: background .2s ease-in-out, border .2s ease-in-out;
-}
+} */
 
 .drop-container:hover {
   background: #eee;
@@ -121,4 +121,8 @@ height: fit-content;
 
 .pag-total{
   height: 20px;
+}
+.children-container {
+  margin-top: 10% ;
+  margin-bottom: 10%;
 }
