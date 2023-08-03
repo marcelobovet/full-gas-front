@@ -11,10 +11,8 @@ const Footer = () => {
                     <span className="mb-3 mb-md-0 text-muted">&copy; 2022 Company, Inc</span>
                 </div>
 
-                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                    <li className="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use  href="#twitter" /></svg></a></li>
-                    <li className="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use href="#instagram" /></svg></a></li>
-                    <li className="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use  href="#facebook" /></svg></a></li>
+                <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    
                 </ul>
             </footer>
         </div>

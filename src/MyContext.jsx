@@ -43,7 +43,6 @@ const ContextProvider = ({ children }) => {
   const getPosts = async () => {
     setPostLoading(true)
     const { data: rPosts } = await axios.get(URL_API + "/posts");
-    console.log(" este es rpost ", rPosts.data);
     setPosts([...rPosts.data])
     
     setPostLoading(false)
@@ -56,6 +55,33 @@ const ContextProvider = ({ children }) => {
     setPostLoading(false)
     return postId
   };
+
+  /* const register = async () => {
+    try {
+      await axios.post(URL_API + "/register");
+      alert("Usuario registrado con éxito");
+    } catch (error) {
+      alert("Algo salió mal ...");
+      console.log(error);
+    }
+  };
+
+  const signin = async () => {
+    const urlServer = "http://localhost:3000";
+    const endpoint = "/login";
+    const { email, password } = usuario;
+    try {
+      if (!email || !password) return alert("Email y password obligatorias");
+      const { data: token } = await axios.post(urlServer + endpoint, usuario);
+      alert("Usuario identificado con éxito 😀");
+      localStorage.setItem("token", token);
+      setUsuario()
+      navigate("/home");
+    } catch ({ response: { data: message } }) {
+      alert(message + " 🙁");
+      console.log(message);
+    }
+  };  */
 
   const addPost = async () => {
     await axios.post(URL_API + "/posts");
@@ -71,6 +97,8 @@ const ContextProvider = ({ children }) => {
     await axios.delete(URL_API + `/posts/${id}`);
     getPosts();
   };
+
+
 
   // CARRO
 
@@ -141,15 +169,10 @@ const ContextProvider = ({ children }) => {
         logout,
         user,
         getPostById
+        //register
+        //signin
         // total,
         // setTotal,
-        // cart,
-        // setCart,
-        // pizzas,
-        // setPizzas,
-        // addPizzas,
-        // getPizza,
-        // removePizzas
       }}>
       {children}
     </MyContext.Provider>

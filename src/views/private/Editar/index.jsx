@@ -4,7 +4,7 @@ const FormEdit = () => {
     return(
         <div className="container w-50 formColor">
         <form>
-            <label for="images" class="drop-container" id="dropcontainer">
+            <label  htmlFor="images"  class="drop-container" id="dropcontainer">
                 <span class="drop-title">Sube el archivo aca</span>
                 or
                 <input type="file" id="images" accept="image/*" required/>

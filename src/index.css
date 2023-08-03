@@ -126,3 +126,9 @@ height: fit-content;
   margin-top: 10% ;
   margin-bottom: 10%;
 }
+
+.p-form {
+  color: #d41a1a;
+  font-size: 12px;
+  margin: 4px 0 8px 0;
+}
