@@ -1,23 +1,14 @@
 import Layout from "../../components/Layout";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import { useContext } from "react";
+import MyContext from "../../MyContext";
 
 import { useNavigate } from "react-router-dom";
 
 const Registrar = () => {
 
-
-    const register = async () => {
-        const URL_API = "http://localhost:3000";
-        try {
-          await axios.post(URL_API + "/register", );
-          alert("Usuario registrado con éxito");
-        } catch (error) {
-          alert("Algo salió mal ...");
-          console.log(error);
-        }
-      };
+  const { register } = useContext(MyContext);
 
 
     const navigate = useNavigate()
@@ -44,9 +35,10 @@ const Registrar = () => {
                 .oneOf([Yup.ref("password")], "contraseñas no coinciden")
                 .required("Campo obligatorio!"),
         }),
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             //alert(JSON.stringify(values, null, 2));
-           console.log(values);
+            const response =  await register(values);
+           console.log(response);
            navigate('/login');
         },
     });
@@ -107,7 +99,7 @@ const Registrar = () => {
                         )}
                 </div>
                 <div className=" d-flex justify-content-center">
-                    <button type="submit" className="btn btn-primary rounded-pill" onClick={register}> registrar </button>
+                    <button type="submit" className="btn btn-primary rounded-pill"> registrar </button>
                 </div>
                 <div className="text-center mt-3">
                     <p>

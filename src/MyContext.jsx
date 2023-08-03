@@ -56,9 +56,10 @@ const ContextProvider = ({ children }) => {
     return postId
   };
 
-  /* const register = async () => {
+  const register = async (values) => {
     try {
-      await axios.post(URL_API + "/register");
+      console.log(values)
+      await axios.post(URL_API + "/signup");
       alert("Usuario registrado con éxito");
     } catch (error) {
       alert("Algo salió mal ...");
@@ -66,9 +67,9 @@ const ContextProvider = ({ children }) => {
     }
   };
 
-  const signin = async () => {
+ /*  const signin = async () => {
     const urlServer = "http://localhost:3000";
-    const endpoint = "/login";
+    const endpoint = "/sigin";
     const { email, password } = usuario;
     try {
       if (!email || !password) return alert("Email y password obligatorias");
@@ -168,8 +169,8 @@ const ContextProvider = ({ children }) => {
         login,
         logout,
         user,
-        getPostById
-        //register
+        getPostById,
+        register
         //signin
         // total,
         // setTotal,
