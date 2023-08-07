@@ -1,39 +1,88 @@
+import { Field, Form, Formik, useFormikContext } from "formik";
+import * as Yup from "yup";
 
+const FormReference = (props) => {
+    //Crea un contexto de formik para el formulario actual
+    const formikContext = useFormikContext();
+    if (props.saveFormRef) {
+      // Asigna el contexto de formik a la prop del componente
+      props.saveFormRef(formikContext);
+    }
+    return null;
+};
 
-const FormPost = () => {
+const FormPost = ({onSubmit, saveFormRef}) => {
+
+    const initialValues = {
+        imagen: "",
+        marca: "",
+        formato: "",
+        tipo: "",
+        precio: "",
+    }
+
+    const schema = Yup.object({
+        imagen: Yup.string()
+            .required("Campo obligatorio!"),
+        marca: Yup.string()
+            .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres")
+            .required("Campo obligatorio!"),
+        formato: Yup.string()
+            .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres")
+            .required("Campo obligatorio!"),
+        tipo: Yup.string()
+            .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres")
+            .required("Campo obligatorio!"),
+        precio: Yup.string()
+            .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres")
+            .required("Campo obligatorio!"),
+    })
+
     return (
-        <div className="container w-50 formColor">
-            <form>
-                <label htmlFor="images" class="drop-container" id="dropcontainer">
-                    <span class="drop-title">Sube el archivo aca</span>
-                    or
-                    <input type="file" id="images" accept="image/*" required/>
-                </label>
-                <div className="mb-3 text-center">
-                    <label className="form-label">Titulo</label>
-                    <input type="text" className="form-control" /* onChange={handleChangeEmail} */ />
+        <div className="container formColor rounded-4 mt-3">
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={schema}>
+             {({ errors, touched }) => (
+            <Form>
+                <div className="row g-3">
+                    <div className="col-md-12">
+                        <label className="form-label ms-2">URL Imagen</label>
+                        <Field className="form-control" id="imagen" name="imagen"/>
+                        {errors.imagen && touched.imagen && (<p className="p-form">{errors.imagen}</p>)}
+                    </div>
                 </div>
                 <div className="row g-3">
                     <div className="col-md-6">
-                        <label className="form-label">Marca</label>
-                        <input type="text" className="form-control" />
+                        <label className="form-label ms-2">Marca</label>
+                        <Field className="form-control" id="marca" name="marca"/>
+                        {errors.marca && touched.marca && (<p className="p-form">{errors.marca}</p>)}
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Peso</label>
-                        <input type="text" className="form-control" />
+                        <label className="form-label ms-2">Formato</label>
+                        <Field className="form-control" id="formato" name="formato"/>
+                        {errors.formato && touched.formato && (<p className="p-form">{errors.formato}</p>)}
                     </div>
                 </div>
-
-                <div className="mb-3 text-center">
-                    <label for="exampleInputPassword1" className="form-label">Precio</label>
-                    <input type="text" className="form-control" /* onChange={handleChangePassword} */ />
+                <div className="row g-3">
+                    <div className="col-md-6">
+                        <label className="form-label ms-2">Tipo</label>
+                        <Field className="form-control" id="tipo" name="tipo"/>
+                        {errors.tipo && touched.tipo && (<p className="p-form">{errors.tipo}</p>)}
+                    </div>
+                    <div className="col-md-6 mb-2">
+                        <label className="form-label ms-2">Precio</label>
+                        <Field className="form-control" id="precio" name="precio"/>
+                        {errors.precio && touched.precio && (<p className="p-form">{errors.precio}</p>)}
+                    </div>
                 </div>
-
-                <div className=" d-flex justify-content-center">
-                    <button type="submit" className="btn btn-primary" /* onClick={onSubmit} */ > Publicar</button>
-                </div>
-
-            </form>
+                {/* Asigna referencia para poder editar/capturar informacion del formulario actual desde cualquier lado */}
+                <FormReference saveFormRef={saveFormRef} />
+            </Form>
+             )}
+        </Formik>
         </div>
     )
 

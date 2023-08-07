@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 
 import MyContext from "../../MyContext";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 const Sesion = () => {
 
-    const { login } = useContext(MyContext);
+    const { login, loginLoading, loginError, getMe } = useContext(MyContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState()
@@ -15,14 +16,20 @@ const Sesion = () => {
     const handleChangeEmail = (e) => { setEmail(e.target.value) };
     const handleChangePassword = (e) => { setPassword(e.target.value) };
 
-    const onSubmit = () => {
-        login(email, password);
-        navigate('/home')
+    const onSubmit = async () => {
+        await login(email, password);
+        const token = localStorage.getItem('token');
+        if(token && !loginError) {
+            await getMe()
+            navigate('/home')
+        } 
     }
 
     return (<Layout>
 
         <div className="container w-50">
+            {loginLoading && <p>Cargando...</p>}
+            {!loginLoading &&  
             <form>
                 <div className="mb-3 text-center">
                     <label for="exampleInputEmail1" className="form-label">Email</label>
@@ -32,6 +39,9 @@ const Sesion = () => {
                     <label for="exampleInputPassword1" className="form-label">Contraseña</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" onChange={handleChangePassword} />
                 </div>
+                {
+                    loginError && <p>{loginError.message}</p>
+                }
                 <div className=" d-flex justify-content-center">
                     <button type="submit" className="btn btn-primary rounded-pill" onClick={onSubmit}>Iniciar sesion</button>
                 </div>
@@ -41,6 +51,7 @@ const Sesion = () => {
                     </p>
                 </div>
             </form>
+            }
         </div>
 
     </Layout>)

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -12,7 +13,7 @@ code {
     monospace;
 }
 
-
+/* ----------------------------------SESION Y REGISTRAR------------------------------------------------------- */
 .registrar {
   background-color: rgb(225, 229, 229);
 }
@@ -22,8 +23,19 @@ code {
   text-align: center;
 }
 
+.p-form {
+  color: #d41a1a;
+  font-size: 12px;
+  margin: 4px 0 8px 0;
+}
+
+.formColor {
+  background-color: rgba(208, 40, 40, 0.086);
+}
+
+ /* ---------------------------------TARJETAS------------------------------------------------------------------ */ 
 .imgStyle {
-  height: 250px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -34,6 +46,26 @@ code {
   justify-content: center;
 }
 
+.card-body {
+  height: auto;
+}
+
+.tarjeta {
+  width: 300px;
+  margin-top: 20px;
+  height: 350px;
+}
+
+.detalle-card {
+  width: 450px;
+}
+
+.grid-card {
+height: fit-content;
+}
+
+ /* ---------------------------------HEADER------------------------------------------------------------------ */ 
+
 .privateRutes {
   display: flex;
   text-decoration: none;
@@ -42,25 +74,13 @@ code {
   font-weight: bold;
 }
 
-.tarjeta {
-  width: 300px;
-  margin-top: 20px;
-  height: 450px;
-}
-
-.card-body {
-  height: auto;
-}
-
 .finder {
   width: 300px;
 }
 
-.formColor {
-  background-color: rgba(208, 40, 40, 0.086);
-}
+ /* ---------------------------------PUBLICACIONES Y EDIT PUBLICACIONES------------------------------------------------------------------ */ 
 
-/* .drop-container {
+.drop-container {
   position: relative;
   display: flex;
   gap: 10px;
@@ -74,7 +94,7 @@ code {
   color: #444;
   cursor: pointer;
   transition: background .2s ease-in-out, border .2s ease-in-out;
-} */
+} 
 
 .drop-container:hover {
   background: #eee;
@@ -93,26 +113,23 @@ code {
   transition: color .2s ease-in-out;
 }
 
+/* ----------------------------------------------------INICIO------------------------------------------------------------ */
+
+
 .inicio {
   width: 90%;
 }
 
-.detalle-card {
-  width: 450px;
-}
-
+/* ----------------------------------------------------BLOQUES------------------------------------------------------------ */
 .bg {
   background-color: aliceblue;
-}
-
-.grid-card {
-height: fit-content;
 }
 
 .bloque {
   background-color: white;
   width: 700px;
 }
+/* ----------------------------------------------------CARR0------------------------------------------------------------ */
 
 .pago {
   height: 40px;
@@ -122,13 +139,8 @@ height: fit-content;
 .pag-total{
   height: 20px;
 }
-.children-container {
-  margin-top: 10% ;
-  margin-bottom: 10%;
-}
+/* .children-container {
+  margin-top: auto ;
+  margin-bottom: auto;
+} */
 
-.p-form {
-  color: #d41a1a;
-  font-size: 12px;
-  margin: 4px 0 8px 0;
-}

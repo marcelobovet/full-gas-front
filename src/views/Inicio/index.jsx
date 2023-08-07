@@ -11,16 +11,16 @@ const Inicio = () => {
     // const [posts, setPosts] = useState(null)
     return (<Layout>
 
-        <div className="inicio mx-auto">
+        <div className="inicio mx-auto vh-100">
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-2 bg-light vh-100">
                     filtros
                 </div>
                 <div className="col-md-10">
                     <div className="row">
                         {postLoading && <p>cargando</p>}
                         {!postLoading && posts.map((post) => {
-                            return (<div className="col-sm-12 col-md-auto col-lg-auto col-xl-auto">
+                            return (<div className="col-sm-12 col-md-auto col-lg-auto col-xl-auto ms-5">
                                 <Card post={post} />
                             </div>)
                         })}

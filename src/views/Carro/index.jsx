@@ -10,9 +10,9 @@ const Carro = () => {
 
   return (
     <Layout>
-      <div className="container d-grid justify-content-center vh-auto bg">
-        {cart && cart.map((cart) => (
-          <div className="justify-content-center align-item-start col-12" > <BloqueCarro item={cart} /></div>
+      <div className="container d-grid justify-content-center vh-100 bg">
+        {cart && cart.map((cart, i) => (
+          <div className="justify-content-center align-item-start col-12" > <BloqueCarro key={i} item={cart} /></div>
         ))}
         <div className="d-flex justify-content-end grid-cart h-25">
           <p className=" fw-bold grid-cart pago-total mt-2"> Total: $   </p>

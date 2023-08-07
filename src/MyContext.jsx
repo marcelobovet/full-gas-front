@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from 'axios';
+//import { useNavigate } from "react-router-dom";
+
 
 const MyContext = createContext();
 
@@ -10,18 +12,32 @@ const ContextProvider = ({ children }) => {
 
   const [posts, setPosts] = useState([]);
   const [postLoading, setPostLoading] = useState(false);
-
   const [cart, setCart] = useState([])
-
   const [user, setUser] = useState(null)
-  // LOGIN
+
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState(null);
+ 
+  const [registerLoading, setRegisterLoading] = useState(false);
+  const [registerError, setRegisterError] = useState(null);
+  //
+
+  ///////////////////////  LOGIN  ////////////////////////////
 
   const login = async (email, password) => {
-    console.log(email, password)
-    // Hacer peticion axios al endpoint de iniciar sesion del backend, debe retornar un token que se guarda como variable en el localStorage.
+    setLoginLoading(true);
+    setLoginError(null);
+    try {
+     
+      const { data: {token} } = await axios.post(URL_API + "/signin", {email, password});
+      localStorage.setItem("token", token);   
+      setLoginLoading(false);
 
-    localStorage.setItem("token", "asdasdasdasdasdasdasdasd");
-    getMe();
+    } catch ({ response: { data: message } }) {
+
+      setLoginError(message)
+      setLoginLoading(false);
+    }
   };
 
   const logout = async () => {
@@ -31,20 +47,39 @@ const ContextProvider = ({ children }) => {
 
   const getMe = async () => {
     const token = localStorage.getItem('token');
-    // 1.- obtenemos el token del localstorage
-    // 2.- Hacer llamada al endpoint que retorna los datos del usuario logueado (usar token para saber quien esta logueado)
-    // 3.- guardar en user, lo retornado por la api
-    const user = { name: 'marcelo', role: { id: 1, name: "admin" } }
-    // const user = { name: 'nicolas', role: {id: 2, name: "user"} }
-    setUser(user)
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    }
+    const res = await axios.get(URL_API + "/usuarios/me", config);
+    setUser(res.data.user)
   }
 
-  //////////////////////////////////////////////////////////////////////
+  ///////////////////////  REGISTER  ////////////////////////////
+
+  const register = async (values) => {
+    setRegisterLoading(true);
+    setRegisterError(null);
+
+    try {
+      console.log(values)
+      await axios.post(URL_API + "/signup", values);
+      setRegisterLoading(false);
+      
+    } catch ({ response: { data: message } }) {
+      setRegisterError(message)
+      setRegisterLoading(false);
+    }
+  };
+
+  ///////////////////////  POST  ////////////////////////////////
+
   const getPosts = async () => {
     setPostLoading(true)
     const { data: rPosts } = await axios.get(URL_API + "/posts");
     setPosts([...rPosts.data])
-    
+
     setPostLoading(false)
   };
 
@@ -56,38 +91,30 @@ const ContextProvider = ({ children }) => {
     return postId
   };
 
-  const register = async (values) => {
-    try {
-      console.log(values)
-      await axios.post(URL_API + "/signup");
-      alert("Usuario registrado con éxito");
-    } catch (error) {
-      alert("Algo salió mal ...");
-      console.log(error);
+  const addPost = async (post) => {
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
     }
-  };
 
- /*  const signin = async () => {
-    const urlServer = "http://localhost:3000";
-    const endpoint = "/sigin";
-    const { email, password } = usuario;
+    setPostLoading(true)
     try {
-      if (!email || !password) return alert("Email y password obligatorias");
-      const { data: token } = await axios.post(urlServer + endpoint, usuario);
-      alert("Usuario identificado con éxito 😀");
-      localStorage.setItem("token", token);
-      setUsuario()
-      navigate("/home");
+      await axios.post(URL_API + "/posts", post, config);
+      setPostLoading(false);
+      getPosts();
+      
     } catch ({ response: { data: message } }) {
-      alert(message + " 🙁");
-      console.log(message);
+      setPostLoading(false);
     }
-  };  */
-
-  const addPost = async () => {
-    await axios.post(URL_API + "/posts");
-    getPosts();
   };
+
+  /* const agregarPost = async () => {
+    const post = { titulo, url: imgSrc, descripcion };
+    await axios.post(urlBaseServer + "/posts", post);
+    getPosts();
+  }; */
 
   const editPost = async (id) => {
     await axios.put(URL_API + `/posts/${id}`);
@@ -100,8 +127,7 @@ const ContextProvider = ({ children }) => {
   };
 
 
-
-  // CARRO
+  ///////////////////////  CARRO  ///////////////////////////////
 
   const addProductCart = ({ quantity, post }) => {
 
@@ -142,6 +168,9 @@ const ContextProvider = ({ children }) => {
     setTotal(total);
   } */
 
+
+  /////////////////////////////////////////////////////////////
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -167,10 +196,15 @@ const ContextProvider = ({ children }) => {
         addProductCart,
         removeProductCart,
         login,
+        loginLoading,
+        loginError,
         logout,
         user,
         getPostById,
-        register
+        register,
+        registerLoading,
+        registerError,
+        getMe
         //signin
         // total,
         // setTotal,

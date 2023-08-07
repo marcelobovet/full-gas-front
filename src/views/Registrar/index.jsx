@@ -38,7 +38,7 @@ const Registrar = () => {
         onSubmit: async (values) => {
             //alert(JSON.stringify(values, null, 2));
             const response =  await register(values);
-           console.log(response);
+           console.log(response + "hola");
            navigate('/login');
         },
     });
