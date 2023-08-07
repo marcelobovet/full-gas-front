@@ -27,10 +27,10 @@ const Sesion = () => {
 
     return (<Layout>
 
-        <div className="container w-50">
+        <div className="container w-50 vh-100 mt-5">
             {loginLoading && <p>Cargando...</p>}
             {!loginLoading &&  
-            <form>
+            <form className="p-3 rounded-2 colorSesion">
                 <div className="mb-3 text-center">
                     <label for="exampleInputEmail1" className="form-label">Email</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleChangeEmail} />

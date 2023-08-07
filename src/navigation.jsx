@@ -34,7 +34,7 @@ export const NAVIGATION = [
     },
     {
         path: "/cart",
-        label: "Carro",
+        label: "Articulos",
         inNav: true,
         role: 'all',
         element: <Carro />,

@@ -26,10 +26,10 @@ const Detalle = () => {
 
     return (<Layout>
 
-        <article className="container d-flex justify-content-center">
+        <article className="container d-flex justify-content-center mt-5 mb-5">
               {postLoading && <p>cargando</p>}
               {!postLoading && postId &&  <div className="card detalle-card">
-                    <img src="..." className="card-img-top" alt="..." />
+                    <img src={postId.imagen} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{postId.titulo}</h5>
                         <p className="card-text">{postId.descripcion}</p>

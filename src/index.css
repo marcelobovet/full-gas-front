@@ -29,8 +29,12 @@ code {
   margin: 4px 0 8px 0;
 }
 
-.formColor {
+.colorRegis {
   background-color: rgba(208, 40, 40, 0.086);
+}
+.colorSesion {
+  background-color: rgba(58, 132, 201, 0.24);
+
 }
 
  /* ---------------------------------TARJETAS------------------------------------------------------------------ */ 
@@ -139,6 +143,8 @@ height: fit-content;
 .pag-total{
   height: 20px;
 }
+
+
 /* .children-container {
   margin-top: auto ;
   margin-bottom: auto;

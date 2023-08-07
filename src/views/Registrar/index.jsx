@@ -44,10 +44,10 @@ const Registrar = () => {
     });
 
     return (<Layout>
-        <div className="container w-50 formColor">
-            <form onSubmit={formik.handleSubmit}>
+        <div className="container w-50 mt-5 vh-100">
+            <form onSubmit={formik.handleSubmit} className="colorRegis p-3 bordered-2 rounded-2" >
                 <div className="row g-3">
-                    <div className="col-md-6">
+                    <div className="text-center">
                         <label className="form-label">Nombre</label>
                         <input
                             name="nombre"
@@ -55,8 +55,8 @@ const Registrar = () => {
                             onChange={formik.handleChange}
                             type="text"
                             className="form-control" />
-                        {formik.errors.full_name && formik.touched.full_name && (
-                            <p className="p-form">{formik.errors.full_name}</p>
+                        {formik.errors.nombre && formik.touched.nombre && (
+                            <p className="p-form">{formik.errors.nombre}</p>
                         )}
                     </div>
                 </div>

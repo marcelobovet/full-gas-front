@@ -110,12 +110,6 @@ const ContextProvider = ({ children }) => {
     }
   };
 
-  /* const agregarPost = async () => {
-    const post = { titulo, url: imgSrc, descripcion };
-    await axios.post(urlBaseServer + "/posts", post);
-    getPosts();
-  }; */
-
   const editPost = async (id) => {
     await axios.put(URL_API + `/posts/${id}`);
     getPosts();
@@ -162,11 +156,11 @@ const ContextProvider = ({ children }) => {
   }
 
   // actualizar el valor del carro
-  /* const calculateTotal = () => {
+/*    const calculateTotal = () => {
     let total = 0;
-    cart.forEach((product) => (total += product.precio * precio.count));
+    cart.forEach((post) => (total += post.precio * post.count));
     setTotal(total);
-  } */
+  }  */
 
 
   /////////////////////////////////////////////////////////////

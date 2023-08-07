@@ -20,7 +20,7 @@ const Header = () => {
   //Se utiliza este array para identificar las rutas publicas que se quieren mostrar al lado izquierdo del nav
   const leftRoutes = ['Registrar', 'Iniciar sesión'];
   //Se utiliza este array para identificar las rutas publicas que se quieren mostrar al lado derecho del nav
-  const rightRoutes = ['Carro'];
+  const rightRoutes = ['Articulos'];
 
   //Se utiliza este array para identificar las rutas privadas que se quieren mostrar al lado izquierdo del nav
   const privateRoutes = ['Publicaciones', 'Historial y favoritos', 'Historial']
@@ -115,13 +115,13 @@ const Header = () => {
 
         <div className="d-flex justify-content-end me-5 fw-bold">
           {/* Despliega nav para rutas publicas del lado derecho */}
-          <p>🛒</p>
+          <p className="m-0 text-center align-middle text-white">🛒</p>
           {ROUTES.map(({ path, label, inNav }) => (
             inNav && rightRoutes.includes(label) &&
             <NavLink className={`text-white text-decoration-none`}  to={path}>{label}</NavLink>
           ))
           }
-          <p className="text-white">  {cart.length? cart.length : ""}</p>
+          <p className="text-white ms-1">  {cart.length? cart.length : ""} </p>
         </div>
 
       </div>
