@@ -20,7 +20,7 @@ const ContextProvider = ({ children }) => {
  
   const [registerLoading, setRegisterLoading] = useState(false);
   const [registerError, setRegisterError] = useState(null);
-  //
+  
 
   ///////////////////////  LOGIN  ////////////////////////////
 
@@ -154,13 +154,6 @@ const ContextProvider = ({ children }) => {
       setCart([...cart])
     }
   }
-
-  // actualizar el valor del carro
-/*    const calculateTotal = () => {
-    let total = 0;
-    cart.forEach((post) => (total += post.precio * post.count));
-    setTotal(total);
-  }  */
 
 
   /////////////////////////////////////////////////////////////

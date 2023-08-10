@@ -8,12 +8,11 @@ import { useContext } from "react";
 const Inicio = () => {
 
     const { posts, postLoading } = useContext(MyContext);
-    // const [posts, setPosts] = useState(null)
     return (<Layout>
 
-        <div className="inicio mx-auto vh-100">
+        <div className="inicio mx-auto vh-auto">
             <div className="row">
-                <div className="col-md-2 bg-light vh-100">
+                <div className="col-md-2 bg-light vh-auto">
                     filtros
                 </div>
                 <div className="col-md-10">

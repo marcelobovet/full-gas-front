@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Registrar, Carro, Inicio, Sesion, Favoritos, Publicaciones, Detalle } from './views';
+import { Registrar, Carro, Inicio, Sesion, Perfil, Detalle } from './views';
 
 // roles all - admin - user
 
@@ -34,24 +34,17 @@ export const NAVIGATION = [
     },
     {
         path: "/cart",
-        label: "Articulos",
+        label: "Articulos:",
         inNav: true,
         role: 'all',
         element: <Carro />,
     },
     {
-        path: "/posts",
-        label: "Publicaciones",
-        inNav: true,
-        role: 'admin',
-        element: <Publicaciones />
-    },
-    {
-        path: "/favorites",
-        label: "Historial y favoritos",
+        path: "/profile",
+        label: "Mi Perfil",
         inNav: true,
         role: 'all',
-        element: <Favoritos />
+        element: <Perfil />
     },
     {
         path: "/posts/:id",
