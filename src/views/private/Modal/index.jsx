@@ -11,7 +11,7 @@ const FormReference = (props) => {
     return null;
 };
 
-const FormPost = ({onSubmit, saveFormRef}) => {
+const FormPost = ({onSubmit, saveFormRef, posts}) => {
 
     const initialValues = {
         imagen: "",
@@ -25,20 +25,20 @@ const FormPost = ({onSubmit, saveFormRef}) => {
         imagen: Yup.string()
             .required("Campo obligatorio!"),
         marca: Yup.string()
-            .min(2, "Minimo 2 caracteres")
-            .max(15, "Maximo 15 caracteres")
+            /* .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres") */
             .required("Campo obligatorio!"),
         formato: Yup.string()
-            .min(2, "Minimo 2 caracteres")
-            .max(15, "Maximo 15 caracteres")
+            /* .min(1, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres") */
             .required("Campo obligatorio!"),
         tipo: Yup.string()
-            .min(2, "Minimo 2 caracteres")
-            .max(15, "Maximo 15 caracteres")
+            /* .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres") */
             .required("Campo obligatorio!"),
         precio: Yup.string()
-            .min(2, "Minimo 2 caracteres")
-            .max(15, "Maximo 15 caracteres")
+            /* .min(2, "Minimo 2 caracteres")
+            .max(15, "Maximo 15 caracteres") */
             .required("Campo obligatorio!"),
     })
 
@@ -57,24 +57,64 @@ const FormPost = ({onSubmit, saveFormRef}) => {
                 <div className="row g-3">
                     <div className="col-md-6">
                         <label className="form-label ms-2">Marca</label>
-                        <Field className="form-control" id="marca" name="marca"/>
+                        <Field 
+                        className="form-select" 
+                        as="select" 
+                        id="marca" 
+                        name="marca">
+                            {posts.map((post, index) => (
+                                <option key={index} value={post.value}>
+                                  {post.marca}
+                                </option>
+                              ))}
+                        </Field>
                         {errors.marca && touched.marca && (<p className="p-form">{errors.marca}</p>)}
                     </div>
                     <div className="col-md-6">
                         <label className="form-label ms-2">Formato</label>
-                        <Field className="form-control" id="formato" name="formato"/>
+                        <Field 
+                        className="form-select" 
+                        as="select" 
+                        id="formato" 
+                        name="formato">
+                            {posts.map((post, index) => (
+                                <option key={index} value={post.value}>
+                                  {post.formato}
+                                </option>
+                              ))}
+                        </Field>
                         {errors.formato && touched.formato && (<p className="p-form">{errors.formato}</p>)}
                     </div>
                 </div>
                 <div className="row g-3">
                     <div className="col-md-6">
                         <label className="form-label ms-2">Tipo</label>
-                        <Field className="form-control" id="tipo" name="tipo"/>
+                        <Field 
+                        className="form-select" 
+                        as="select" 
+                        id="tipo" 
+                        name="tipo">
+                            {posts.map((post, index) => (
+                                <option key={index} value={post.value}>
+                                  {post.tipo}
+                                </option>
+                              ))}
+                        </Field> 
                         {errors.tipo && touched.tipo && (<p className="p-form">{errors.tipo}</p>)}
                     </div>
                     <div className="col-md-6 mb-2">
                         <label className="form-label ms-2">Precio</label>
-                        <Field className="form-control" id="precio" name="precio"/>
+                        <Field 
+                        className="form-select" 
+                        as="select" 
+                        id="precio" 
+                        name="precio">
+                            {posts.map((post, index) => (
+                                <option key={index} value={post.value}>
+                                  {post.precio}
+                                </option>
+                              ))}
+                        </Field> 
                         {errors.precio && touched.precio && (<p className="p-form">{errors.precio}</p>)}
                     </div>
                 </div>

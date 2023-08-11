@@ -14,7 +14,7 @@ const Header = () => {
 
     const [showModal, setShowModal] = useState(false);
 
-    const { user, logout, cart, addPost } = useContext(MyContext);
+    const { user, logout, cart, addPost, posts } = useContext(MyContext);
     const navigate = useNavigate()
 
     //Se utiliza este array para identificar las rutas publicas que se quieren mostrar al lado izquierdo del nav
@@ -47,7 +47,7 @@ const Header = () => {
 
             {/* MODAL PARA LA CREACION DE PUBLICACIONES */}
             <Modal showModal={showModal} handleClose={handleShowModal} title={'Crear Publicación'}  handleSave={handleSave}>
-                <FormPost saveFormRef={saveFormRef} onSubmit={submitPublication}  />
+                <FormPost saveFormRef={saveFormRef} onSubmit={submitPublication} posts={posts} />
             </Modal>
 
             <div className="columnas">

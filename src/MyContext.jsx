@@ -20,6 +20,8 @@ const ContextProvider = ({ children }) => {
  
   const [registerLoading, setRegisterLoading] = useState(false);
   const [registerError, setRegisterError] = useState(null);
+
+ // const [cartTotal, setCartTotal] = useState(0);
   
 
   ///////////////////////  LOGIN  ////////////////////////////
@@ -155,6 +157,11 @@ const ContextProvider = ({ children }) => {
     }
   }
 
+ /*  const calculateTotal = () => {
+    const total = cart.reduce((acc, item) => acc + (item.post.price * item.quantity), 0);
+  setCartTotal(total);
+  } */
+
 
   /////////////////////////////////////////////////////////////
 
@@ -170,6 +177,11 @@ const ContextProvider = ({ children }) => {
     }
   }, []);
 
+
+/*   useEffect(() => {
+    calculateTotal()
+  },[])
+ */
   return (
     <MyContext.Provider
       value={{
@@ -193,8 +205,8 @@ const ContextProvider = ({ children }) => {
         registerError,
         getMe
         //signin
-        // total,
-        // setTotal,
+        //cartTotal,
+        //setCartTotal
       }}>
       {children}
     </MyContext.Provider>
