@@ -20,7 +20,7 @@ const Card = ({ post }) => {
                 </div>
                 <ul className="list-group list-group-flush text-center">
                     <li className="list-group-item">Precio: ${post.precio} </li>
-                    <li className="list-group-item">Formato: {post.formato} kg. </li>
+                    <li className="list-group-item">Formato: {post.formato} </li>
                     <li className="list-group-item">Marca:  {post.marca} </li>
                     <li className="list-group-item">Tipo:  {post.tipo} </li>
                 </ul>
