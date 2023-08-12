@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-const Modall = ({title, children, showModal, handleClose, handleSave}) => {
+const Modall = ({title, children, showModal, handleClose, handleSave, successText = "Crear"}) => {
 
     return (
         <Modal show={showModal} onHide={handleClose} size="lg">
@@ -15,7 +15,7 @@ const Modall = ({title, children, showModal, handleClose, handleSave}) => {
             Cancelar
           </Button>
           <Button variant="primary" onClick={handleSave}>
-            Crear
+            {successText}
           </Button>
         </Modal.Footer>
       </Modal>

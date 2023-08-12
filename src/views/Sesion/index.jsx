@@ -20,7 +20,7 @@ const Sesion = () => {
         await login(email, password);
         const token = localStorage.getItem('token');
         if(token && !loginError) {
-            await getMe()
+            await login()
             navigate('/home')
         } 
     }

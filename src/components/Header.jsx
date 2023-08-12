@@ -7,14 +7,14 @@ import { ROUTES } from "../navigation";
 import { NavLink, useNavigate } from 'react-router-dom';
 import MyContext from "../MyContext";
 import { useContext, useState, useRef } from "react";
-import FormPost from "../views/private/Modal";
+import ProductForm from "../views/private/Producto";
 
 
 const Header = () => {
 
     const [showModal, setShowModal] = useState(false);
 
-    const { user, logout, cart, addPost, posts } = useContext(MyContext);
+    const { user, logout, cart, addPost, posts, products } = useContext(MyContext);
     const navigate = useNavigate()
 
     //Se utiliza este array para identificar las rutas publicas que se quieren mostrar al lado izquierdo del nav
@@ -34,20 +34,22 @@ const Header = () => {
     const saveFormRef = (ref) => { formRef.current = ref };
 
     //Permite guardar el producto con los valores asociados al formulario
-    const submitPublication = async (values) => { addPost(values) };
+    const submitPublication = async (values) => {
+        console.log(values)
+        await addPost(values)
+        setShowModal(false);
+
+    };
 
     //Permite hacer submit del formulario formik usando la referencia antes creada
-    const handleSave = () => {
-        formRef.current.submitForm()
-        setShowModal(false);
-    }
+    const handleSave = () => { formRef.current.submitForm() }
 
     return (
-        < div className="navbar navbar-dark bg-dark mb-4 main-header" >
+        < div className="navbar navbar-dark bg-dark  main-header" >
 
-            {/* MODAL PARA LA CREACION DE PUBLICACIONES */}
-            <Modal showModal={showModal} handleClose={handleShowModal} title={'Crear Publicación'}  handleSave={handleSave}>
-                <FormPost saveFormRef={saveFormRef} onSubmit={submitPublication} posts={posts} />
+            {/* MODAL PARA LA CREACION DE PRODUCTOS */}
+            <Modal showModal={showModal} handleClose={handleShowModal} title={'Crear Publicación'} handleSave={handleSave}>
+                <ProductForm saveFormRef={saveFormRef} onSubmit={submitPublication} />
             </Modal>
 
             <div className="columnas">
@@ -71,16 +73,16 @@ const Header = () => {
                     </NavLink>
                 </div>
 
-                <div className="d-flex justify-content-end mt-3">
+                <div className="d-flex justify-content-end mt-3 gap-2">
                     {user &&
                         <>
                             <div>
                                 <button className="btn btn-success" onClick={handleShowModal}>
-                                    Crear publicación
+                                    Crear Publicación
                                 </button>
                             </div>
                             <div>
-                                <button className="btn btn-danger ms-2" onClick={logout}>
+                                <button className="btn btn-danger " onClick={logout}>
                                     cerrar sesion
                                 </button>
                             </div>
