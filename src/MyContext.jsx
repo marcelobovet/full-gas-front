@@ -27,7 +27,10 @@ const ContextProvider = ({ children }) => {
 
 
   // const [cartTotal, setCartTotal] = useState(0);
-
+  const currencyFormatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP'
+  });
 
   ///////////////////////  LOGIN  ////////////////////////////
 
@@ -36,19 +39,22 @@ const ContextProvider = ({ children }) => {
     setLoginError(null);
     try {
 
-      const { data: { token } } = await axios.post(URL_API + "/signin", { email, password });
-      localStorage.setItem("token", token);
+      if (email && password) {
+        const { data: { token } } = await axios.post(URL_API + "/signin", { email, password });
+        localStorage.setItem("token", token);
+        await getMe();
+      }
       setLoginLoading(false);
-      
+
     } catch ({ response: { data: message } }) {
 
       setLoginError(message)
       setLoginLoading(false);
     }
-    
+
   };
 
-  /* const getMe = async () => {
+  const getMe = async () => {
     const token = localStorage.getItem('token');
     const config = {
       headers: {
@@ -57,14 +63,14 @@ const ContextProvider = ({ children }) => {
     }
     const res = await axios.get(URL_API + "/me", config);
     setUser(res.data)
-  } */
+  } 
 
   const logout = async () => {
     setUser(null)
     localStorage.removeItem("token");
   }
 
- 
+
   ///////////////////////  REGISTER  ////////////////////////////
 
   const register = async (values) => {
@@ -136,9 +142,16 @@ const ContextProvider = ({ children }) => {
     }
   };
 
-  const editPost = async (id) => {
-    await axios.put(URL_API + `/posts/${id}`);
-    getPosts();
+  const editPost = async (id, values) => {
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    }
+    await axios.put(URL_API + `/posts/${id}`, values, config);
+    await getPosts();
+    return await getPostById(id);
   };
 
   const deletePost = async (id) => {
@@ -207,12 +220,12 @@ const ContextProvider = ({ children }) => {
   }, []);
 
   //Este useEffect hace que al recargar la pagina no se cierre la sesion si existe un token en el localStorage
-  /* useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      getMe();
-    }
-  }, []); */
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     getMe();
+  //   }
+  // }, []);
 
 
   /*   useEffect(() => {
@@ -222,6 +235,7 @@ const ContextProvider = ({ children }) => {
   return (
     <MyContext.Provider
       value={{
+        currencyFormatter,
         posts,
         postLoading,
         getPosts,

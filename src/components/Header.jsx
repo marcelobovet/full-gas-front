@@ -14,7 +14,7 @@ const Header = () => {
 
     const [showModal, setShowModal] = useState(false);
 
-    const { user, logout, cart, addPost, posts, products } = useContext(MyContext);
+    const { user, logout, cart, addPost } = useContext(MyContext);
     const navigate = useNavigate()
 
     //Se utiliza este array para identificar las rutas publicas que se quieren mostrar al lado izquierdo del nav
@@ -23,7 +23,7 @@ const Header = () => {
     const rightRoutes = ['Articulos:'];
 
     //Se utiliza este array para identificar las rutas privadas que se quieren mostrar al lado izquierdo del nav
-    const privateRoutes = ['Mi Perfil']
+    const privateRoutes = ['Mi Perfil', 'Publicaciones']
 
     //Permite cambiar el estado del modal de abierto a cerrado y viceversa.
     const handleShowModal = () => { setShowModal(!showModal) }

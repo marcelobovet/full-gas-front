@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Registrar, Carro, Inicio, Sesion, Perfil, Detalle } from './views';
+import { Registrar, Carro, Inicio, Sesion, Perfil, Detalle, Publicaciones } from './views';
 
 // roles all - admin - user
 
@@ -45,6 +45,13 @@ export const NAVIGATION = [
         inNav: true,
         role: 'all',
         element: <Perfil />
+    },
+    {
+        path: "/publicaciones",
+        label: "Publicaciones",
+        inNav: true,
+        role: 'all',
+        element: <Publicaciones />
     },
     {
         path: "/posts/:id",
