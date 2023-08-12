@@ -17,12 +17,17 @@ const ContextProvider = ({ children }) => {
 
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
- 
+
   const [registerLoading, setRegisterLoading] = useState(false);
   const [registerError, setRegisterError] = useState(null);
 
- // const [cartTotal, setCartTotal] = useState(0);
-  
+  const [products, setProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(false);
+  const [productsError, setProductsError] = useState(null);
+
+
+  // const [cartTotal, setCartTotal] = useState(0);
+
 
   ///////////////////////  LOGIN  ////////////////////////////
 
@@ -30,34 +35,36 @@ const ContextProvider = ({ children }) => {
     setLoginLoading(true);
     setLoginError(null);
     try {
-     
-      const { data: {token} } = await axios.post(URL_API + "/signin", {email, password});
-      localStorage.setItem("token", token);   
-      setLoginLoading(false);
 
+      const { data: { token } } = await axios.post(URL_API + "/signin", { email, password });
+      localStorage.setItem("token", token);
+      setLoginLoading(false);
+      
     } catch ({ response: { data: message } }) {
 
       setLoginError(message)
       setLoginLoading(false);
     }
+    
   };
 
-  const logout = async () => {
-    setUser(null)
-    localStorage.removeItem("token");
-  }
-
-  const getMe = async () => {
+  /* const getMe = async () => {
     const token = localStorage.getItem('token');
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token
       }
     }
-    const res = await axios.get(URL_API + "/usuarios/me", config);
-    setUser(res.data.user)
+    const res = await axios.get(URL_API + "/me", config);
+    setUser(res.data)
+  } */
+
+  const logout = async () => {
+    setUser(null)
+    localStorage.removeItem("token");
   }
 
+ 
   ///////////////////////  REGISTER  ////////////////////////////
 
   const register = async (values) => {
@@ -68,10 +75,27 @@ const ContextProvider = ({ children }) => {
       console.log(values)
       await axios.post(URL_API + "/signup", values);
       setRegisterLoading(false);
-      
+
     } catch ({ response: { data: message } }) {
       setRegisterError(message)
       setRegisterLoading(false);
+    }
+  };
+
+  ///////////////////////  PRODUCTS  ////////////////////////////
+
+  const getProducts = async () => {
+    setProductsLoading(true);
+    setProductsError(null);
+
+    try {
+      const { data } = await axios.get(URL_API + "/posts");
+      setProductsLoading(false);
+      setProducts(data.data)
+
+    } catch ({ response: { data: message } }) {
+      setRegisterError(message)
+      setProductsLoading(false);
     }
   };
 
@@ -88,7 +112,7 @@ const ContextProvider = ({ children }) => {
   const getPostById = async (id) => {
     setPostLoading(true)
     const res = await axios.get(`${URL_API}/posts/${id}`);
-    const postId = await res.data
+    const postId = await res.data.data
     setPostLoading(false)
     return postId
   };
@@ -106,7 +130,7 @@ const ContextProvider = ({ children }) => {
       await axios.post(URL_API + "/posts", post, config);
       setPostLoading(false);
       getPosts();
-      
+
     } catch ({ response: { data: message } }) {
       setPostLoading(false);
     }
@@ -157,31 +181,44 @@ const ContextProvider = ({ children }) => {
     }
   }
 
- /*  const calculateTotal = () => {
-    const total = cart.reduce((acc, item) => acc + (item.post.price * item.quantity), 0);
-  setCartTotal(total);
-  } */
+  const cartResume = () => {
+    let quantity = 0
+    let total = 0
+
+    cart.forEach((cart) => {
+      quantity = quantity + cart.quantity;
+      total = total + cart.post.precio * cart.quantity
+    })
+
+    return { quantity, total }
+  }
+
+  /*  const calculateTotal = () => {
+     const total = cart.reduce((acc, item) => acc + (item.post.price * item.quantity), 0);
+   setCartTotal(total);
+   } */
 
 
   /////////////////////////////////////////////////////////////
 
   useEffect(() => {
     getPosts();
+    getProducts();
   }, []);
 
   //Este useEffect hace que al recargar la pagina no se cierre la sesion si existe un token en el localStorage
-  useEffect(() => {
+  /* useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       getMe();
     }
-  }, []);
+  }, []); */
 
 
-/*   useEffect(() => {
-    calculateTotal()
-  },[])
- */
+  /*   useEffect(() => {
+      calculateTotal()
+    },[])
+   */
   return (
     <MyContext.Provider
       value={{
@@ -192,6 +229,7 @@ const ContextProvider = ({ children }) => {
         editPost,
         deletePost,
         cart,
+        cartResume,
         addProductCart,
         removeProductCart,
         login,
@@ -203,7 +241,10 @@ const ContextProvider = ({ children }) => {
         register,
         registerLoading,
         registerError,
-        getMe
+        //getMe,
+        products,
+        productsLoading,
+        productsError
         //signin
         //cartTotal,
         //setCartTotal
