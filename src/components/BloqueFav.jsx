@@ -1,10 +1,10 @@
-//import MyContext from "../MyContext";
-//import { useContext } from "react";
+/* import MyContext from "../MyContext";
+import { useContext } from "react";
 
 
 const BloqueFav = ({ post }) => {
 
-   // const { addProductCart } = useContext(MyContext);
+   const { addProductCart } = useContext(MyContext);
 
     return (
         <div>
@@ -29,7 +29,7 @@ const BloqueFav = ({ post }) => {
                 </div>
 
                 <div className="d-flex justify-content-end">
-                    <button className="btn btn-warning ms-2 mb-2 rounded-pill" /* onClick={() => { addProductCart({ quantity: 1, post }) }} */>
+                    <button className="btn btn-warning ms-2 mb-2 rounded-pill">
                         Agregar al carro
                     </button>
 
@@ -40,4 +40,4 @@ const BloqueFav = ({ post }) => {
     )
 }
 
-export default BloqueFav;
+export default BloqueFav; */

@@ -83,7 +83,7 @@ const Header = () => {
                             </div>
                             <div>
                                 <button className="btn btn-danger " onClick={logout}>
-                                    cerrar sesion
+                                    Cerrar sesion
                                 </button>
                             </div>
                         </>

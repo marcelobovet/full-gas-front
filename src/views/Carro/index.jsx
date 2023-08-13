@@ -79,13 +79,13 @@ const Carro = () => {
         }
         {cart.length !== 0 &&
           <div className="d-flex flex-column fixed-bottom px-5 bg-dark border-top" style={{ marginBottom: '3rem' }}>
-            <div className="d-flex justify-content-md-end gap-5 pt-2 text-light">
+            <div className="d-flex justify-content-sm-end gap-5 pt-2 text-light">
               <p>Articulos: {resume.quantity}</p>
               <p>Total: {currencyFormatter.format(resume.total)} </p>
             </div>
             <div className="d-flex justify-content-end pb-5 ">
-              {user ? <button className="btn btn-success rounded-pill" style={{ paddingLeft: '6rem', paddingRight: '6rem' }}>Pagar</button> :
-                <button className="btn btn-warning rounded-pill" style={{ paddingLeft: '4rem', paddingRight: '4rem' }} onClick={()=>{navigate('/login')}}>Iniciar Sesión</button>
+              {user ? <button className="btn btn-success rounded-pill" style={{ paddingLeft: '6rem', paddingRight: '6rem' }} onClick={() => { console.log("aca va obj con id_pub y cantidad") }}>Pagar</button> :
+                <button className="btn btn-warning rounded-pill" style={{ paddingLeft: '4rem', paddingRight: '4rem' }} onClick={() => { navigate('/login') }}>Iniciar Sesión</button>
               }
             </div>
           </div>

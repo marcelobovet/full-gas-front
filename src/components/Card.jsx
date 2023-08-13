@@ -29,7 +29,7 @@ const Card = ({ post }) => {
                         Agregar al carro
                     </button>
                     <button className="btn btn-outline-primary rounded-pill" onClick={() => { navigate(`/posts/${post.id}`) }}>
-                        ver mas
+                        Ver mas
                     </button>
                 </div>
 

@@ -26,7 +26,6 @@ const ContextProvider = ({ children }) => {
   const [productsError, setProductsError] = useState(null);
 
 
-  // const [cartTotal, setCartTotal] = useState(0);
   const currencyFormatter = new Intl.NumberFormat('es-CL', {
     style: 'currency',
     currency: 'CLP'
@@ -69,7 +68,6 @@ const ContextProvider = ({ children }) => {
     setUser(null)
     localStorage.removeItem("token");
   }
-
 
   ///////////////////////  REGISTER  ////////////////////////////
 
@@ -155,8 +153,14 @@ const ContextProvider = ({ children }) => {
   };
 
   const deletePost = async (id) => {
-    await axios.delete(URL_API + `/posts/${id}`);
-    getPosts();
+     /* const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    }  */
+    await axios.delete(URL_API + `/posts/${id}` );
+    return await getPosts();
   };
 
 
@@ -179,7 +183,7 @@ const ContextProvider = ({ children }) => {
     }
   }
 
-  const removeProductCart = ({ quantity, post }) => {
+  const removeProductCart = ({ quantity, post }) => {  
 
     //Si la cantidad ingresada por paramentro es 0, elimina el producto del carrito
     if (quantity === 0) {
@@ -194,6 +198,7 @@ const ContextProvider = ({ children }) => {
     }
   }
 
+
   const cartResume = () => {
     let quantity = 0
     let total = 0
@@ -201,15 +206,11 @@ const ContextProvider = ({ children }) => {
     cart.forEach((cart) => {
       quantity = quantity + cart.quantity;
       total = total + cart.post.precio * cart.quantity
+      
     })
 
     return { quantity, total }
   }
-
-  /*  const calculateTotal = () => {
-     const total = cart.reduce((acc, item) => acc + (item.post.price * item.quantity), 0);
-   setCartTotal(total);
-   } */
 
 
   /////////////////////////////////////////////////////////////
@@ -227,11 +228,6 @@ const ContextProvider = ({ children }) => {
   //   }
   // }, []);
 
-
-  /*   useEffect(() => {
-      calculateTotal()
-    },[])
-   */
   return (
     <MyContext.Provider
       value={{
