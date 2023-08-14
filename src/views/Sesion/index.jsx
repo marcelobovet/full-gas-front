@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 
 const Sesion = () => {
 
-    const { login, loginLoading, loginError, getMe } = useContext(MyContext);
+    const { login, loginLoading, loginError } = useContext(MyContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState()
