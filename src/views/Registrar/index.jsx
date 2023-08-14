@@ -103,7 +103,7 @@ const Registrar = () => {
                 </div>
                 <div className="text-center mt-3">
                     <p>
-                        Si ya tienes una cuenta inicia sesion <p className="link-underline-primary" onClick={()=>{navigate('/login')}}>Aqui</p>.
+                        Si ya tienes una cuenta inicia sesion <p className="link-underline-primary  under" onClick={()=>{navigate('/login')}}>Aqui</p>.
                     </p>
                 </div>
             </form>

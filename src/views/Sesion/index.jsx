@@ -48,7 +48,7 @@ const Sesion = () => {
                     </div>
                     <div className="text-center mt-3">
                         <p>
-                            ¿Aun no tienes una cuenta? <p className="link-underline-primary" onClick={() => { navigate('/register') }}>Registrate</p>.
+                            ¿Aun no tienes una cuenta? <p className="link-underline-primary under" onClick={() => { navigate('/register') }}>Registrate</p>.
                         </p>
                     </div>
                 </form>

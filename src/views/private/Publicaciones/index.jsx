@@ -21,7 +21,7 @@ const Publicaciones = () => {
     return (
         <Layout>
             <div className="container d-grid justify-content-center mx-100 vh-auto bottom_space">
-                <div className="col-md-10">
+                <div className="col-md-12">
                     <div className="row">
                         {userPostsLoading && !userPosts && <p>cargando</p>}
                         {!userPostsLoading && userPosts && userPosts.map((post) => {

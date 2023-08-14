@@ -162,3 +162,8 @@ height: fit-content;
 .bottom_space {
   padding-bottom: 6rem;
 }
+
+.under {
+  color: blue;
+  text-decoration: underline;
+}
