@@ -11,7 +11,7 @@ const Card = ({ post }) => {
         <article className="card tarjeta">
             <img className="imgStyle"
                 alt="img-gas"
-                src={post.imagen}>
+                src={ process.env.REACT_APP_BACKEND_URL + post.imagen}>
             </img>
 
             <div className="card-body row">
