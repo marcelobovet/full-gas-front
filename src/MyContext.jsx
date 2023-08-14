@@ -232,13 +232,13 @@ const ContextProvider = ({ children }) => {
     getProducts();
   }, []);
 
-  //Este useEffect hace que al recargar la pagina no se cierre la sesion si existe un token en el localStorage
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     getMe();
-  //   }
-  // }, []);
+/*   // Este useEffect hace que al recargar la pagina no se cierre la sesion si existe un token en el localStorage
+ useEffect(() => {
+   const token = localStorage.getItem('token');
+     if (token) {
+     getMe();
+     }
+  }, []); */
 
   return (
     <MyContext.Provider
