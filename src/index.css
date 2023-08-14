@@ -8,7 +8,7 @@ body {
   height: 100%;
   background-color: #EDEDED;
 }
-  
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -34,21 +34,23 @@ code {
 .colorRegis {
   background-color: rgba(208, 40, 40, 0.086);
 }
+
 .colorSesion {
   background-color: rgba(58, 132, 201, 0.24);
 
 }
 
- /* ---------------------------------TARJETAS------------------------------------------------------------------ */ 
+/* ---------------------------------TARJETAS------------------------------------------------------------------ */
 .imgStyle {
-  height: 200px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .columnas {
   display: grid;
   width: 100%;
-  grid-template-columns: 30% 30% 30% ;
+  grid-template-columns: 30% 30% 30%;
   justify-content: center;
 }
 
@@ -67,10 +69,10 @@ code {
 }
 
 .grid-card {
-height: fit-content;
+  height: fit-content;
 }
 
- /* ---------------------------------HEADER------------------------------------------------------------------ */ 
+/* ---------------------------------HEADER------------------------------------------------------------------ */
 
 .privateRutes {
   display: flex;
@@ -84,7 +86,7 @@ height: fit-content;
   width: 300px;
 }
 
- /* ---------------------------------PUBLICACIONES Y EDIT PUBLICACIONES------------------------------------------------------------------ */ 
+/* ---------------------------------PUBLICACIONES Y EDIT PUBLICACIONES------------------------------------------------------------------ */
 
 .drop-container {
   position: relative;
@@ -100,7 +102,7 @@ height: fit-content;
   color: #444;
   cursor: pointer;
   transition: background .2s ease-in-out, border .2s ease-in-out;
-} 
+}
 
 .drop-container:hover {
   background: #eee;
@@ -132,11 +134,12 @@ height: fit-content;
 }
 
 .bloque {
-  
+
   background-color: white;
   width: 700px;
-  
+
 }
+
 /* ----------------------------------------------------CARR0------------------------------------------------------------ */
 
 .pago {
@@ -144,12 +147,12 @@ height: fit-content;
   width: 80px;
 }
 
-.pag-total{
+.pag-total {
   height: 20px;
 }
 
 
-.children-container { 
+.children-container {
   margin: 0;
 }
 
