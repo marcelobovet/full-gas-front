@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const MyContext = createContext();
 
-const URL_API = "http://localhost:3000";
+const URL_API = `${process.env.REACT_APP_BACKEND_URL}`;
 
 
 const ContextProvider = ({ children }) => {
@@ -25,6 +25,9 @@ const ContextProvider = ({ children }) => {
   const [productsLoading, setProductsLoading] = useState(false);
   const [productsError, setProductsError] = useState(null);
 
+  // const [userPosts, setUserPosts] = useState([]);
+  const [userPostsLoading, setUserPostsLoading] = useState(false);
+  //const [userPostsError, setUserPostsError] = useState(null);
 
   const currencyFormatter = new Intl.NumberFormat('es-CL', {
     style: 'currency',
@@ -111,6 +114,15 @@ const ContextProvider = ({ children }) => {
     setPosts([...rPosts.data])
 
     setPostLoading(false)
+  };
+
+  const getUserPosts = async () => {
+    setUserPostsLoading(true)
+    const { data: rPosts } = await axios.get(URL_API + "/posts");
+    setUserPostsLoading(false)
+
+    return [...rPosts.data]
+
   };
 
   const getPostById = async (id) => {
@@ -254,7 +266,9 @@ const ContextProvider = ({ children }) => {
         //getMe,
         products,
         productsLoading,
-        productsError
+        productsError,
+        userPostsLoading,
+        getUserPosts,
         //signin
         //cartTotal,
         //setCartTotal
