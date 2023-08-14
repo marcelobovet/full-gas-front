@@ -32,8 +32,7 @@ const Detalle = () => {
     };
 
     const handleDelete = () => {
-        deletePost(id)
-        //alert("se elimino la wea")
+        deletePost(id);
         navigateDetalle("/home")
         setShowDelModal(false);
 

@@ -41,6 +41,16 @@ const Carro = () => {
     setItemOffset(newOffset);
   };
 
+  const getPurchase = () => {
+    const purchase = cart.map(({ quantity, post })=> {
+      return {
+        publicaciones_id: post.id, 
+        cantidad: quantity
+      }
+    } )
+    console.log(purchase)
+  }
+
   useEffect(() => {
     console.log(cart)
     const summary = cartResume();
@@ -84,7 +94,7 @@ const Carro = () => {
               <p>Total: {currencyFormatter.format(resume.total)} </p>
             </div>
             <div className="d-flex justify-content-end pb-5 ">
-              {user ? <button className="btn btn-success rounded-pill" style={{ paddingLeft: '6rem', paddingRight: '6rem' }} onClick={() => { console.log("aca va obj con id_pub y cantidad") }}>Pagar</button> :
+              {user ? <button className="btn btn-success rounded-pill" style={{ paddingLeft: '6rem', paddingRight: '6rem' }} onClick={getPurchase}>Pagar</button> :
                 <button className="btn btn-warning rounded-pill" style={{ paddingLeft: '4rem', paddingRight: '4rem' }} onClick={() => { navigate('/login') }}>Iniciar Sesión</button>
               }
             </div>

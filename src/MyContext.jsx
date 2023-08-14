@@ -153,14 +153,14 @@ const ContextProvider = ({ children }) => {
   };
 
   const deletePost = async (id) => {
-     /* const token = localStorage.getItem('token');
+     const token = localStorage.getItem('token');
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token
       }
-    }  */
-    await axios.delete(URL_API + `/posts/${id}` );
-    return await getPosts();
+    } 
+    await axios.delete(URL_API + `/posts/${id}`, config );
+    await getPosts();
   };
 
 
