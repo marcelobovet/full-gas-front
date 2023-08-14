@@ -48,7 +48,7 @@ export const NAVIGATION = [
     },
     {
         path: "/publicaciones",
-        label: "Publicaciones",
+        label: "Mis Publicaciones",
         inNav: true,
         role: 'all',
         element: <Publicaciones />

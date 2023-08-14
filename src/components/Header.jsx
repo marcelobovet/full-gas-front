@@ -23,7 +23,7 @@ const Header = () => {
     const rightRoutes = ['Articulos:'];
 
     //Se utiliza este array para identificar las rutas privadas que se quieren mostrar al lado izquierdo del nav
-    const privateRoutes = ['Mi Perfil', 'Publicaciones']
+    const privateRoutes = ['Mi Perfil', 'Mis Publicaciones']
 
     //Permite cambiar el estado del modal de abierto a cerrado y viceversa.
     const handleShowModal = () => { setShowModal(!showModal) }

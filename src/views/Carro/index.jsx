@@ -5,6 +5,7 @@ import BloqueCarro from "../../components/BloqueCarro";
 import MyContext from "../../MyContext";
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal";
 
 const Items = ({ currentItems }) => {
   return (
@@ -22,8 +23,12 @@ const Items = ({ currentItems }) => {
 const Carro = () => {
   const navigate = useNavigate();
 
-  const { cart, cartResume, currencyFormatter, user } = useContext(MyContext);
+  const { cart, cartResume, currencyFormatter, user, createPurchase } = useContext(MyContext);
   const [resume, setResume] = useState({ total: 0, quantity: 0 })
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => { setShowModal(!showModal) }
 
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 3;
@@ -42,13 +47,20 @@ const Carro = () => {
   };
 
   const getPurchase = () => {
-    const purchase = cart.map(({ quantity, post })=> {
+    const purchase = cart.map(({ quantity, post }) => {
       return {
-        publicaciones_id: post.id, 
+        publicaciones_id: post.id,
         cantidad: quantity
       }
-    } )
-    console.log(purchase)
+    })
+    return purchase;
+  }
+
+
+  const onSubmit = async () => {
+    const purchase = getPurchase();
+    await createPurchase(purchase);
+    navigate('/home');
   }
 
   useEffect(() => {
@@ -59,6 +71,10 @@ const Carro = () => {
 
   return (
     <Layout>
+      <Modal
+        showModal={showModal} handleClose={handleShowModal} title={'Realizar Compra'} handleSave={onSubmit} successText={'Aceptar'}>
+        ¿Desea realizar la compra de estos productos?
+      </Modal>
       <div className="container d-grid justify-content-center">
         {cart &&
           <div>
@@ -94,7 +110,7 @@ const Carro = () => {
               <p>Total: {currencyFormatter.format(resume.total)} </p>
             </div>
             <div className="d-flex justify-content-end pb-5 ">
-              {user ? <button className="btn btn-success rounded-pill" style={{ paddingLeft: '6rem', paddingRight: '6rem' }} onClick={getPurchase}>Pagar</button> :
+              {user ? <button className="btn btn-success rounded-pill" style={{ paddingLeft: '6rem', paddingRight: '6rem' }} onClick={handleShowModal}>Pagar</button> :
                 <button className="btn btn-warning rounded-pill" style={{ paddingLeft: '4rem', paddingRight: '4rem' }} onClick={() => { navigate('/login') }}>Iniciar Sesión</button>
               }
             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useRef } from "react";
 import Layout from "../../components/Layout";
-import {  useNavigate,  useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import MyContext from "../../MyContext";
 import Modal from "../../components/Modal";
@@ -39,13 +39,15 @@ const Detalle = () => {
     }
 
     const handleSave = () => { formRef.current.submitForm() }
-   
+
 
     useEffect(() => {
         const obtenerDatos = async () => {
             const postId = await getPostById(id);
             setPostId(postId)
         }
+
+        console.log(id, postId)
         if (id && !postId) {
             obtenerDatos()
         }
@@ -72,7 +74,7 @@ const Detalle = () => {
         {!postLoading && postId &&
             <div className="d-flex flex-row gap-5 p-5 justify-content-center">
                 <div className="col-3">
-                    <img src={postId.imagen} className="card-img-top" alt="..." />
+                    <img src={process.env.REACT_APP_BACKEND_URL + "/" + postId.imagen} className="card-img-top" alt="..." />
                 </div>
                 <div className="col-3 d-flex flex-column gap-4">
                     <div className="">

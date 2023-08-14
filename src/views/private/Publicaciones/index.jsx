@@ -20,7 +20,7 @@ const Publicaciones = () => {
 
     return (
         <Layout>
-            <div className="container d-grid justify-content-center vh-100">
+            <div className="container d-grid justify-content-center mx-auto vh-auto bottom_space">
                 <div className="col-md-10">
                     <div className="row">
                         {userPostsLoading && !userPosts && <p>cargando</p>}
@@ -31,6 +31,7 @@ const Publicaciones = () => {
                         })}
                     </div>
                 </div>
+                { userPosts && userPosts.length === 0 && <p className="mt-4">No tienes productos publicados.</p>}
             </div>
         </Layout>
     )

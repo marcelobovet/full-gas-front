@@ -7,7 +7,7 @@ const BloqueCarro = ({ item }) => {
 
   return (
     <div className="d-flex bloque mt-3 rounded border flex-row align-items-center">
-      <img className="rounded-start col-3" alt="img-gas" width={150} height={150} src={item.post.imagen} />
+      <img className="rounded-start col-3" alt="img-gas" width={150} height={150} src={process.env.REACT_APP_BACKEND_URL + "/" + item.post.imagen} />
       <div className="col-6 ps-3" >
         <div className="text-uppercase"><h3>{item.post.marca} {item.post.tipo}</h3></div>
         <div className="text-uppercase"><h5>{item.post.formato}</h5></div>
