@@ -22,7 +22,7 @@ const Sesion = () => {
     const onSubmit = async () => {
         if (email && password) {
             await login(email, password);
-            if (!loginError) { navigate('/home') }
+            if (loginError) { navigate('/home') }
         }
     }
 

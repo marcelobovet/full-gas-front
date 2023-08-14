@@ -20,7 +20,7 @@ const Publicaciones = () => {
 
     return (
         <Layout>
-            <div className="container d-grid justify-content-center mx-auto vh-auto bottom_space">
+            <div className="container d-grid justify-content-center mx-100 vh-auto bottom_space">
                 <div className="col-md-10">
                     <div className="row">
                         {userPostsLoading && !userPosts && <p>cargando</p>}
