@@ -47,6 +47,11 @@ code {
   object-position: top;
 }
 
+.fotocarro {
+  object-position: top;
+}
+
+
 .columnas {
   display: grid;
   width: 100%;
